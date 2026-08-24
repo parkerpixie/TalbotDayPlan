@@ -1,6 +1,7 @@
 (() => {
   const SHOPPING_URL = 'https://www.google.com/maps/search/?api=1&query=shopping+near+me';
-  let decorating = false;
+  const JIMOTHY_VIDEO = 'assets/places/Jimothy%20gif.mp4';
+  let observedPanel = null;
 
   function getCounts(shell) {
     const scores = shell.querySelectorAll('.quest-score');
@@ -28,42 +29,68 @@
             <span class="jimothy-award__requirement ${hunt >= 35 ? 'is-complete' : ''}"><strong>${hunt} / 35</strong> hunt finds</span>
             <span class="jimothy-award__requirement ${personal >= 5 ? 'is-complete' : ''}"><strong>${personal} / 5</strong> Porter’s Choice</span>
           </div>
-          ${won
-            ? `<a class="jimothy-award__button" href="${SHOPPING_URL}" target="_blank" rel="noopener">🛍 See What’s Around Me</a>`
-            : `<button class="jimothy-award__button is-locked" type="button" disabled>🔒 Shopping Trip Locked</button>`}
+          ${won ? `
+            <div class="jimothy-award__surprise">
+              <p class="jimothy-award__surprise-label">✨ A MESSAGE FROM JIMOTHY ✨</p>
+              <video class="jimothy-award__video" controls autoplay playsinline loop preload="auto" aria-label="A surprise message from Jimothy">
+                <source src="${JIMOTHY_VIDEO}" type="video/mp4">
+                Your browser cannot play Jimothy's victory message.
+              </video>
+            </div>
+            <a class="jimothy-award__button" href="${SHOPPING_URL}" target="_blank" rel="noopener">🛍 See What’s Around Me</a>
+          ` : `<button class="jimothy-award__button is-locked" type="button" disabled>🔒 Shopping Trip Locked</button>`}
         </div>
       </section>`;
   }
 
+  function observePanel(panel) {
+    observedPanel = panel;
+    observer.observe(panel, { childList: true, subtree: true });
+  }
+
   function decorateQuest() {
-    if (decorating) return;
     const shell = document.querySelector('[data-panel="quest"] .quest-shell');
     if (!shell) return;
-    decorating = true;
+
+    observer.disconnect();
     const { hunt, personal, won } = getCounts(shell);
     shell.querySelector('.jimothy-award')?.remove();
     shell.insertAdjacentHTML('afterbegin', awardMarkup(hunt, personal, won));
-    decorating = false;
+
+    if (observedPanel) observePanel(observedPanel);
+
+    if (won) {
+      const video = shell.querySelector('.jimothy-award__video');
+      if (video) {
+        video.currentTime = 0;
+        const playAttempt = video.play();
+        if (playAttempt?.catch) playAttempt.catch(() => {});
+      }
+    }
   }
 
-  const observer = new MutationObserver(() => {
-    if (!decorating) requestAnimationFrame(decorateQuest);
+  const observer = new MutationObserver((mutations) => {
+    const onlyAwardChanges = mutations.every(mutation => mutation.target.closest?.('.jimothy-award'));
+    if (onlyAwardChanges) return;
+    requestAnimationFrame(decorateQuest);
   });
 
   function start() {
-    decorateQuest();
     const questPanel = document.querySelector('[data-panel="quest"]');
-    if (questPanel) observer.observe(questPanel, { childList: true, subtree: true });
-    else {
-      const bodyObserver = new MutationObserver(() => {
-        const panel = document.querySelector('[data-panel="quest"]');
-        if (!panel) return;
-        bodyObserver.disconnect();
-        decorateQuest();
-        observer.observe(panel, { childList: true, subtree: true });
-      });
-      bodyObserver.observe(document.body, { childList: true, subtree: true });
+    if (questPanel) {
+      observePanel(questPanel);
+      decorateQuest();
+      return;
     }
+
+    const bodyObserver = new MutationObserver(() => {
+      const panel = document.querySelector('[data-panel="quest"]');
+      if (!panel) return;
+      bodyObserver.disconnect();
+      observePanel(panel);
+      decorateQuest();
+    });
+    bodyObserver.observe(document.body, { childList: true, subtree: true });
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
