@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,650;9..144,750&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="food-upgrade.css">
+  <link rel="stylesheet" href="quest.css">
 </head>
 <body>
   <header class="hero">
@@ -23,6 +24,7 @@
         <span>🌲 Sleeping Bear</span>
         <span>🥾 Pick-your-own effort</span>
         <span>🍔 Food decisions solved</span>
+        <span>🎯 $30 Porter Quest</span>
       </div>
     </div>
   </header>
@@ -105,26 +107,10 @@
           <p class="eyebrow eyebrow--dark">IF THE PLAN CHANGES</p>
           <h3>Pick the mood instead.</h3>
         </div>
-        <button class="mood-card jump-to-trail" data-trail="north-bar-lake">
-          <span class="mood-card__icon">🏖️</span>
-          <strong>We just want water</strong>
-          <small>North Bar Lake</small>
-        </button>
-        <button class="mood-card jump-to-trail" data-trail="pyramid-point">
-          <span class="mood-card__icon">📸</span>
-          <strong>Shortest big payoff</strong>
-          <small>Pyramid Point</small>
-        </button>
-        <button class="mood-card jump-to-trail" data-trail="good-harbor-bay">
-          <span class="mood-card__icon">😌</span>
-          <strong>Keep it easy</strong>
-          <small>Good Harbor Bay</small>
-        </button>
-        <button class="mood-card jump-tab" data-target-tab="food">
-          <span class="mood-card__icon">🍕</span>
-          <strong>Abort nature</strong>
-          <small>Go eat something</small>
-        </button>
+        <button class="mood-card jump-to-trail" data-trail="north-bar-lake"><span class="mood-card__icon">🏖️</span><strong>We just want water</strong><small>North Bar Lake</small></button>
+        <button class="mood-card jump-to-trail" data-trail="pyramid-point"><span class="mood-card__icon">📸</span><strong>Shortest big payoff</strong><small>Pyramid Point</small></button>
+        <button class="mood-card jump-to-trail" data-trail="good-harbor-bay"><span class="mood-card__icon">😌</span><strong>Keep it easy</strong><small>Good Harbor Bay</small></button>
+        <button class="mood-card jump-tab" data-target-tab="food"><span class="mood-card__icon">🍕</span><strong>Abort nature</strong><small>Go eat something</small></button>
       </div>
     </section>
 
@@ -140,7 +126,6 @@
           <a class="outline-button" href="https://www.sleepingbeardunes.com/things-to-do/outdoor-recreation/hiking-trails/" target="_blank" rel="noopener">Trail map site</a>
         </div>
       </div>
-
       <div class="filter-row" id="trailFilters" aria-label="Filter trails">
         <button class="filter-chip is-active" data-trail-filter="all">Everything</button>
         <button class="filter-chip" data-trail-filter="drive">🚗 Drive</button>
@@ -148,7 +133,6 @@
         <button class="filter-chip" data-trail-filter="hike">🥾 Real hike</button>
         <button class="filter-chip" data-trail-filter="water">🏖️ Water</button>
       </div>
-
       <div class="trail-grid" id="trailGrid"></div>
     </section>
 
@@ -161,7 +145,6 @@
         </div>
         <span class="status-pill status-pill--food">Menus open in a new tab</span>
       </div>
-
       <div class="food-town-nav" id="foodTownNav" aria-label="Food by area">
         <button class="town-chip is-active" data-food-town="empire">Empire</button>
         <button class="town-chip" data-food-town="glen-arbor">Glen Arbor</button>
@@ -169,7 +152,6 @@
         <button class="town-chip" data-food-town="fishtown">Fishtown / Leland</button>
         <button class="town-chip" data-food-town="food-trucks">Food Truck Lots</button>
       </div>
-
       <div class="food-toolbar food-toolbar--buttons">
         <input id="foodSearch" type="hidden" value="">
         <div class="food-filter-row cuisine-filter-row" id="foodFilters" aria-label="Filter restaurants by food type">
@@ -188,7 +170,6 @@
           <button class="filter-chip" data-food-filter="mexican">🌮 Mexican</button>
         </div>
       </div>
-
       <div class="food-summary" id="foodSummary"></div>
       <div class="food-grid" id="foodGrid"></div>
     </section>
@@ -203,5 +184,6 @@
 
   <script src="app.js"></script>
   <script src="food-upgrade.js"></script>
+  <script src="quest.js"></script>
 </body>
 </html>
