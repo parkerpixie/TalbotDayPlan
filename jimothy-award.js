@@ -108,35 +108,24 @@
       const originalLabel = originalInput.closest('label');
       if (!originalLabel) return;
 
-      originalLabel.firstChild && (originalLabel.firstChild.textContent = '📷 Take Photo');
+      if (originalLabel.firstChild?.nodeType === Node.TEXT_NODE) {
+        originalLabel.firstChild.textContent = '📷 Take Photo';
+      }
       originalLabel.classList.add('quest-photo-action', 'quest-photo-action--camera');
 
-      const libraryLabel = document.createElement('label');
-      libraryLabel.className = 'quest-photo-action quest-photo-action--library';
-      libraryLabel.textContent = '🖼 Choose Existing Photo';
+      const libraryButton = document.createElement('button');
+      libraryButton.type = 'button';
+      libraryButton.className = 'quest-photo-action quest-photo-action--library';
+      libraryButton.textContent = '🖼 Choose Existing Photo';
+      libraryButton.setAttribute('aria-label', 'Choose an existing photo from your photo library');
 
-      const libraryInput = document.createElement('input');
-      libraryInput.type = 'file';
-      libraryInput.accept = 'image/*';
-      libraryInput.setAttribute('aria-label', 'Choose an existing photo from your library');
-      libraryLabel.appendChild(libraryInput);
-
-      libraryInput.addEventListener('change', () => {
-        const file = libraryInput.files?.[0];
-        if (!file) return;
-
-        try {
-          const transfer = new DataTransfer();
-          transfer.items.add(file);
-          originalInput.files = transfer.files;
-          originalInput.dispatchEvent(new Event('change', { bubbles: true }));
-        } catch (error) {
-          console.error('Could not pass selected library photo to quest input.', error);
-          alert('That photo could not be attached. Please try again from the photo library.');
-        }
+      libraryButton.addEventListener('click', () => {
+        originalInput.removeAttribute('capture');
+        originalInput.click();
+        setTimeout(() => originalInput.setAttribute('capture', 'environment'), 0);
       });
 
-      originalLabel.insertAdjacentElement('afterend', libraryLabel);
+      originalLabel.insertAdjacentElement('afterend', libraryButton);
       card.dataset.photoButtonsUpgraded = 'true';
     });
   }
