@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#31584a">
+  <meta name="description" content="Talbot Day Plan — a low-drama daily guide for Sleeping Bear Dunes, food, and whatever we decide next.">
+  <title>Talbot Day Plan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,650;9..144,750&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__mist"></div>
+    <div class="shell hero__content">
+      <p class="eyebrow">NORTHERN MICHIGAN • AUGUST 24, 2026</p>
+      <h1>Talbot Day Plan</h1>
+      <p class="hero__subtitle">A loose plan. Not a blood oath.</p>
+      <div class="hero__chips" aria-label="Today's vibe">
+        <span>🌲 Sleeping Bear</span>
+        <span>🥾 Pick-your-own effort</span>
+        <span>🍔 Food decisions solved</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tabs" aria-label="Talbot Day sections">
+    <div class="shell tabs__inner">
+      <button class="tab is-active" type="button" data-tab="plan">TODAY</button>
+      <button class="tab" type="button" data-tab="trails">TRAIL CARDS</button>
+      <button class="tab" type="button" data-tab="food">FOOD</button>
+    </div>
+  </nav>
+
+  <main class="shell main">
+    <section class="panel is-active" id="plan" data-panel="plan">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow eyebrow--dark">TODAY'S LOOSE PLAN</p>
+          <h2>Enough structure to stop asking “so what are we doing?”</h2>
+        </div>
+        <span class="status-pill">Flexible on purpose</span>
+      </div>
+
+      <div class="plan-grid">
+        <article class="plan-stop plan-stop--primary">
+          <span class="plan-stop__number">1</span>
+          <div>
+            <p class="plan-stop__time">MORNING</p>
+            <h3>Pierce Stocking Scenic Drive</h3>
+            <p>Start with the greatest scenery-to-effort ratio in the park. Drive the 7.4-mile loop, hop out at overlooks, and let everyone get oriented without committing to a hike.</p>
+            <button class="text-link jump-to-trail" data-trail="pierce-stocking">See the card →</button>
+          </div>
+        </article>
+
+        <article class="plan-stop">
+          <span class="plan-stop__number">2</span>
+          <div>
+            <p class="plan-stop__time">THEN</p>
+            <h3>Dune Climb</h3>
+            <p>Climb only as far as people want. The first dune is an experience all by itself. Nobody is secretly signing up for the 3.5-mile sand slog to Lake Michigan.</p>
+            <button class="text-link jump-to-trail" data-trail="dune-climb">See the card →</button>
+          </div>
+        </article>
+
+        <article class="plan-stop">
+          <span class="plan-stop__number">3</span>
+          <div>
+            <p class="plan-stop__time">MIDDAY RESET</p>
+            <h3>Glen Haven</h3>
+            <p>History, beach, Maritime Museum, old boats and buildings. It counts as Doing A Thing without requiring everyone to march through woods in single file.</p>
+            <button class="text-link jump-to-trail" data-trail="glen-haven">See the card →</button>
+          </div>
+        </article>
+
+        <article class="plan-stop plan-stop--choice">
+          <span class="plan-stop__number">4</span>
+          <div>
+            <p class="plan-stop__time">ONLY IF THE GROUP STILL HAS HP</p>
+            <h3>Choose one: Pyramid Point or Empire Bluff</h3>
+            <p>Both are short, real hikes with a clear scenic payoff. Pyramid Point is the shortest overlook mission. Empire Bluff gives the classic Sleeping Bear view.</p>
+            <div class="button-row">
+              <button class="mini-button jump-to-trail" data-trail="pyramid-point">Pyramid Point</button>
+              <button class="mini-button jump-to-trail" data-trail="empire-bluff">Empire Bluff</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="plan-stop plan-stop--food">
+          <span class="plan-stop__number">5</span>
+          <div>
+            <p class="plan-stop__time">CIVILIZATION</p>
+            <h3>Eat somewhere people actually agree on</h3>
+            <p>Empire, Glen Arbor and Fishtown are all loaded below. Menus are one tap away, so nobody has to stand on a sidewalk while five people independently search restaurants.</p>
+            <button class="text-link jump-tab" data-target-tab="food">Open FOOD →</button>
+          </div>
+        </article>
+      </div>
+
+      <div class="quick-picks">
+        <div class="quick-picks__title">
+          <p class="eyebrow eyebrow--dark">IF THE PLAN CHANGES</p>
+          <h3>Pick the mood instead.</h3>
+        </div>
+        <button class="mood-card jump-to-trail" data-trail="north-bar-lake">
+          <span class="mood-card__icon">🏖️</span>
+          <strong>We just want water</strong>
+          <small>North Bar Lake</small>
+        </button>
+        <button class="mood-card jump-to-trail" data-trail="pyramid-point">
+          <span class="mood-card__icon">📸</span>
+          <strong>Shortest big payoff</strong>
+          <small>Pyramid Point</small>
+        </button>
+        <button class="mood-card jump-to-trail" data-trail="good-harbor-bay">
+          <span class="mood-card__icon">😌</span>
+          <strong>Keep it easy</strong>
+          <small>Good Harbor Bay</small>
+        </button>
+        <button class="mood-card jump-tab" data-target-tab="food">
+          <span class="mood-card__icon">🍕</span>
+          <strong>Abort nature</strong>
+          <small>Go eat something</small>
+        </button>
+      </div>
+    </section>
+
+    <section class="panel" id="trails" data-panel="trails">
+      <div class="section-heading section-heading--stack-mobile">
+        <div>
+          <p class="eyebrow eyebrow--dark">SLEEPING BEAR DECODER</p>
+          <h2>What each place actually involves</h2>
+          <p class="section-copy">Tap a photo card to flip it. The back answers the important questions: how far, what terrain, whether you reach water, and why anyone would bother.</p>
+        </div>
+        <div class="resource-buttons">
+          <a class="outline-button" href="assets/places/Seeping%20Bear%20Dunes%20Trail%20Map.pdf" target="_blank" rel="noopener">Open saved trail map</a>
+          <a class="outline-button" href="https://www.sleepingbeardunes.com/things-to-do/outdoor-recreation/hiking-trails/" target="_blank" rel="noopener">Trail map site</a>
+        </div>
+      </div>
+
+      <div class="filter-row" id="trailFilters" aria-label="Filter trails">
+        <button class="filter-chip is-active" data-trail-filter="all">Everything</button>
+        <button class="filter-chip" data-trail-filter="drive">🚗 Drive</button>
+        <button class="filter-chip" data-trail-filter="short">🥾 Short walk</button>
+        <button class="filter-chip" data-trail-filter="hike">🥾 Real hike</button>
+        <button class="filter-chip" data-trail-filter="water">🏖️ Water</button>
+      </div>
+
+      <div class="trail-grid" id="trailGrid"></div>
+    </section>
+
+    <section class="panel" id="food" data-panel="food">
+      <div class="section-heading section-heading--stack-mobile">
+        <div>
+          <p class="eyebrow eyebrow--dark">FOOD</p>
+          <h2>Pick a town. Pick a menu. Eat.</h2>
+          <p class="section-copy">This is intentionally not every business Google can cough up. It is food, coffee, sweets and useful quick stops.</p>
+        </div>
+        <span class="status-pill status-pill--food">Menus open in a new tab</span>
+      </div>
+
+      <div class="food-town-nav" id="foodTownNav" aria-label="Food by area">
+        <button class="town-chip is-active" data-food-town="empire">Empire</button>
+        <button class="town-chip" data-food-town="glen-arbor">Glen Arbor</button>
+        <button class="town-chip" data-food-town="fishtown">Fishtown / Leland</button>
+        <button class="town-chip" data-food-town="food-trucks">Food Truck Lots</button>
+      </div>
+
+      <div class="food-toolbar">
+        <label class="search-box">
+          <span>⌕</span>
+          <input id="foodSearch" type="search" placeholder="Search burgers, deli, coffee, pizza…" autocomplete="off">
+        </label>
+        <div class="food-filter-row" id="foodFilters">
+          <button class="filter-chip is-active" data-food-filter="all">All</button>
+          <button class="filter-chip" data-food-filter="meal">Meals</button>
+          <button class="filter-chip" data-food-filter="quick">Quick</button>
+          <button class="filter-chip" data-food-filter="coffee">Coffee / sweets</button>
+        </div>
+      </div>
+
+      <div class="food-summary" id="foodSummary"></div>
+      <div class="food-grid" id="foodGrid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer__inner">
+      <strong>Talbot Day Plan</strong>
+      <span>Built because “there was this trail my friend and I did once” is not actionable information.</span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
