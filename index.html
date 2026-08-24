@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,650;9..144,750&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="food-upgrade.css">
 </head>
 <body>
   <header class="hero">
@@ -93,7 +94,7 @@
           <div>
             <p class="plan-stop__time">CIVILIZATION</p>
             <h3>Eat somewhere people actually agree on</h3>
-            <p>Empire, Glen Arbor and Fishtown are all loaded below. Menus are one tap away, so nobody has to stand on a sidewalk while five people independently search restaurants.</p>
+            <p>Empire, Glen Arbor, Traverse City and Fishtown are loaded below. Menus are one tap away, so nobody has to stand on a sidewalk while five people independently search restaurants.</p>
             <button class="text-link jump-tab" data-target-tab="food">Open FOOD →</button>
           </div>
         </article>
@@ -155,8 +156,8 @@
       <div class="section-heading section-heading--stack-mobile">
         <div>
           <p class="eyebrow eyebrow--dark">FOOD</p>
-          <h2>Pick a town. Pick a menu. Eat.</h2>
-          <p class="section-copy">This is intentionally not every business Google can cough up. It is food, coffee, sweets and useful quick stops.</p>
+          <h2>Pick a town. Pick what sounds good. Eat.</h2>
+          <p class="section-copy">No secret search vocabulary required. Tap the kind of food you want and the cards do the sorting.</p>
         </div>
         <span class="status-pill status-pill--food">Menus open in a new tab</span>
       </div>
@@ -164,20 +165,27 @@
       <div class="food-town-nav" id="foodTownNav" aria-label="Food by area">
         <button class="town-chip is-active" data-food-town="empire">Empire</button>
         <button class="town-chip" data-food-town="glen-arbor">Glen Arbor</button>
+        <button class="town-chip" data-food-town="traverse-city">Traverse City</button>
         <button class="town-chip" data-food-town="fishtown">Fishtown / Leland</button>
         <button class="town-chip" data-food-town="food-trucks">Food Truck Lots</button>
       </div>
 
-      <div class="food-toolbar">
-        <label class="search-box">
-          <span>⌕</span>
-          <input id="foodSearch" type="search" placeholder="Search burgers, deli, coffee, pizza…" autocomplete="off">
-        </label>
-        <div class="food-filter-row" id="foodFilters">
+      <div class="food-toolbar food-toolbar--buttons">
+        <input id="foodSearch" type="hidden" value="">
+        <div class="food-filter-row cuisine-filter-row" id="foodFilters" aria-label="Filter restaurants by food type">
           <button class="filter-chip is-active" data-food-filter="all">All</button>
-          <button class="filter-chip" data-food-filter="meal">Meals</button>
-          <button class="filter-chip" data-food-filter="quick">Quick</button>
-          <button class="filter-chip" data-food-filter="coffee">Coffee / sweets</button>
+          <button class="filter-chip" data-food-filter="burgers">🍔 Burgers</button>
+          <button class="filter-chip" data-food-filter="pizza">🍕 Pizza</button>
+          <button class="filter-chip" data-food-filter="sandwiches">🥪 Sandwiches</button>
+          <button class="filter-chip" data-food-filter="dessert">🍨 Dessert</button>
+          <button class="filter-chip" data-food-filter="breakfast">🍳 Breakfast</button>
+          <button class="filter-chip" data-food-filter="coffee">☕ Coffee</button>
+          <button class="filter-chip" data-food-filter="beer">🍺 Beer / Brewery</button>
+          <button class="filter-chip" data-food-filter="italian">🍝 Italian</button>
+          <button class="filter-chip" data-food-filter="greek">🥙 Greek</button>
+          <button class="filter-chip" data-food-filter="seafood">🐟 Seafood</button>
+          <button class="filter-chip" data-food-filter="asian">🍜 Asian</button>
+          <button class="filter-chip" data-food-filter="mexican">🌮 Mexican</button>
         </div>
       </div>
 
@@ -194,5 +202,6 @@
   </footer>
 
   <script src="app.js"></script>
+  <script src="food-upgrade.js"></script>
 </body>
 </html>
