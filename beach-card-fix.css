@@ -1,0 +1,60 @@
+/* Beach Day card readability fix.
+   Keep the photo-card grid Parker likes, but let the information side actually be read. */
+
+#trails .trail-grid {
+  align-items: start;
+}
+
+#trails .trail-card,
+#trails .trail-card__inner {
+  min-height: 500px;
+  height: 500px;
+}
+
+#trails .trail-card__back {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-gutter: stable;
+  padding-bottom: 24px;
+}
+
+#trails .trail-card__back::-webkit-scrollbar {
+  width: 8px;
+}
+
+#trails .trail-card__back::-webkit-scrollbar-thumb {
+  background: rgba(49, 88, 74, .28);
+  border-radius: 999px;
+}
+
+#trails .trail-card__back::before {
+  content: "Scroll for the full beach intel ↓";
+  display: block;
+  margin: -2px 0 12px;
+  color: var(--muted);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+}
+
+#trails .trail-card__actions {
+  margin-top: 16px;
+}
+
+@media (max-width: 760px) {
+  #trails .trail-card,
+  #trails .trail-card__inner {
+    min-height: 520px;
+    height: 520px;
+  }
+
+  #trails .trail-card__back {
+    padding: 20px;
+  }
+
+  #trails .trail-detail {
+    grid-template-columns: 78px 1fr;
+    font-size: .82rem;
+  }
+}
