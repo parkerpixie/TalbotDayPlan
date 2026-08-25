@@ -11,7 +11,27 @@
   height: 500px;
 }
 
+/* Extra hardening for browsers that are picky about 3D card faces. */
+#trails .trail-card__inner {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+#trails .trail-card__face {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+#trails .trail-card__front {
+  -webkit-transform: rotateY(0deg) translateZ(1px);
+  transform: rotateY(0deg) translateZ(1px);
+}
+
 #trails .trail-card__back {
+  -webkit-transform: rotateY(180deg) translateZ(1px);
+  transform: rotateY(180deg) translateZ(1px);
   overflow-y: auto;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
@@ -49,8 +69,53 @@
     height: 520px;
   }
 
+  /* Mobile browsers can ghost text when a 3D transformed face is also scrollable.
+     Use a simple face swap on phones instead of a hardware-composited 3D flip. */
+  #trails .trail-card__inner,
+  #trails .trail-card.is-flipped .trail-card__inner {
+    -webkit-transform: none !important;
+    transform: none !important;
+    transform-style: flat;
+    -webkit-transform-style: flat;
+  }
+
+  #trails .trail-card__face,
+  #trails .trail-card__front,
   #trails .trail-card__back {
+    -webkit-transform: none !important;
+    transform: none !important;
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+    transition: opacity .2s ease, visibility .2s ease;
+  }
+
+  #trails .trail-card__front {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    z-index: 2;
+  }
+
+  #trails .trail-card__back {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 1;
     padding: 20px;
+  }
+
+  #trails .trail-card.is-flipped .trail-card__front {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  #trails .trail-card.is-flipped .trail-card__back {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    z-index: 2;
   }
 
   #trails .trail-detail {
