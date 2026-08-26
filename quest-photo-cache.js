@@ -92,3 +92,12 @@
   observer.observe(document.body,{childList:true,subtree:true});
   setTimeout(restoreVisiblePreviews,250);
 })();
+
+// Keep shopping-family corrections in their own file while loading them after SHOP HOP renders.
+(() => {
+  if (document.getElementById('shopper-preference-corrections-script')) return;
+  const script = document.createElement('script');
+  script.id = 'shopper-preference-corrections-script';
+  script.src = 'shopper-preference-corrections.js?v=20260826-2';
+  document.body.appendChild(script);
+})();
