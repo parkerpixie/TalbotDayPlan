@@ -95,9 +95,17 @@
 
 // Keep shopping-family corrections in their own file while loading them after SHOP HOP renders.
 (() => {
-  if (document.getElementById('shopper-preference-corrections-script')) return;
-  const script = document.createElement('script');
-  script.id = 'shopper-preference-corrections-script';
-  script.src = 'shopper-preference-corrections.js?v=20260826-2';
-  document.body.appendChild(script);
+  if (!document.getElementById('shopper-preference-corrections-script')) {
+    const script = document.createElement('script');
+    script.id = 'shopper-preference-corrections-script';
+    script.src = 'shopper-preference-corrections.js?v=20260826-2';
+    document.body.appendChild(script);
+  }
+
+  if (!document.getElementById('guntzviller-reality-check-script')) {
+    const reality = document.createElement('script');
+    reality.id = 'guntzviller-reality-check-script';
+    reality.src = 'guntzviller-reality-check.js?v=20260826-1';
+    document.body.appendChild(reality);
+  }
 })();
