@@ -1,0 +1,155 @@
+/* August 26 Shop Hop presentation. Kept separate so the Beach Card code can stay intact for vacation history. */
+.shop-route-note {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: start;
+  padding: 16px 18px;
+  margin: 0 0 18px;
+  border: 1px solid rgba(49, 88, 74, .16);
+  border-radius: var(--radius-small);
+  background: linear-gradient(135deg, #eef4f0, #fff);
+  color: var(--muted);
+}
+.shop-route-note strong { color: var(--forest-dark); }
+
+.shop-filters {
+  position: sticky;
+  top: 54px;
+  z-index: 8;
+  padding: 10px 0 14px;
+  background: rgba(251, 248, 242, .96);
+  backdrop-filter: blur(12px);
+}
+
+.shop-bucket { margin-top: 30px; }
+.shop-bucket + .shop-bucket { margin-top: 52px; }
+.shop-bucket__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid rgba(49, 88, 74, .14);
+}
+.shop-bucket__heading h3 {
+  margin: 0;
+  font-size: clamp(1.65rem, 3vw, 2.35rem);
+}
+.shop-bucket__heading p:not(.eyebrow) {
+  margin: 6px 0 0;
+  max-width: 760px;
+  color: var(--muted);
+}
+.shop-count {
+  white-space: nowrap;
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: var(--sand);
+  color: var(--forest-dark);
+  font-size: .78rem;
+  font-weight: 800;
+}
+
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.shop-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 310px;
+  padding: 20px;
+  border: 1px solid rgba(49, 88, 74, .12);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow-small);
+}
+.shop-card[hidden], .shop-bucket[hidden] { display: none !important; }
+.shop-card--closed { opacity: .66; background: #f4f1eb; }
+.shop-card__topline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 32px;
+}
+.shop-card__icon { font-size: 1.45rem; }
+.shop-card__tag {
+  font-size: .68rem;
+  font-weight: 900;
+  letter-spacing: .075em;
+  color: var(--forest);
+}
+.shop-card h3 {
+  margin: 14px 0 8px;
+  font-size: 1.35rem;
+  line-height: 1.08;
+}
+.shop-card__closed {
+  width: fit-content;
+  margin: 0 0 7px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #eee0e4;
+  color: #7a4054;
+  font-size: .72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.shop-card__description {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: .94rem;
+}
+.shop-card__address {
+  margin: auto 0 12px;
+  padding-top: 8px;
+  color: var(--ink);
+  font-size: .82rem;
+  font-weight: 700;
+}
+.shop-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.shop-card__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--forest);
+  color: #fff;
+  text-decoration: none;
+  font-size: .8rem;
+  font-weight: 800;
+}
+.shop-card__link--quiet {
+  border: 1px solid rgba(49, 88, 74, .18);
+  background: transparent;
+  color: var(--forest);
+}
+
+@media (max-width: 900px) {
+  .shop-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .shop-filters { top: 51px; }
+}
+
+@media (max-width: 640px) {
+  .shop-hop-heading { align-items: flex-start; }
+  .shop-route-note { grid-template-columns: 1fr; }
+  .shop-grid { grid-template-columns: 1fr; }
+  .shop-card { min-height: 0; padding: 18px; }
+  .shop-bucket__heading { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .shop-filters {
+    position: static;
+    padding-top: 0;
+    background: transparent;
+    backdrop-filter: none;
+  }
+}
